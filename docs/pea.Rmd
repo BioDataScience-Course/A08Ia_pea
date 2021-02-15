@@ -1,0 +1,95 @@
+---
+title: "___"
+author: "___"
+date: "___"
+output: html_document
+---
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+<!--- Consignes
+Réalisez une introduction de 5 à 10 lignes sur la génétique mendélienne.
+--->
+
+<!--- Consignes
+Ajoutez une image de Grégor Mendel. Sauvez votre image dans un dossier que vous nommerez `images`. Utilisez un chemin d'accès relatif pour accéder à cette image dans ce document.
+--->
+
+# Situation 1
+
+Un croisement est effectué entre deux lignées pures de pois (la première à des graines lisses et la seconde des graines ridées). En génération F1, tous les hybrides ont le phénotype graine lisse. En génération F2, on retrouve les proportions suivantes sur 3529 graines étudiées, on observe 2237 graines lisses et 1292 graines ridées. 
+
+D'après les lois de Mendel, la génération F2 doit respecter un ratio de 3 graines lisses pour 1 graines ridées. Est ce que ce croisement respecte les lois de Mendel ?
+
+<!--- Consignes
+Reformulez la situation décrite afin de proposer l'hypothèse nulle et l'hypothèse alternative associée au test de chi^2^ que vous allez réaliser ci-dessous.
+--->
+
+<!--- Consignes
+Proposez un tableau de contingence qui reprend les observations de la génération F2 obtenue.
+--->
+
+```{r pea_tab}
+(pea_tab <- as.table(c(lisse = ___, ridee = ___)))
+```
+
+
+<!--- Consignes
+Complétez le chunk ci-dessous afin de réfuter ou non l'hypothèse nulle au seuil alpha de 5%.
+--->
+
+```{r chi2_pea}
+chisq.test(___, p = ___, rescale.p = FALSE)
+```
+
+<!--- Consignes
+Décrivez les résultats de votre test statistique afin de répondre à la question posée ci-dessus. N'oubliez pas d'être complet. Un test d'hypothèse doit être décrit d'un point de vue biologique et statistique.
+--->
+
+<!--- Consignes
+Est-ce que le résultat obtenu par votre analyse est en adéquation avec les lois de Mendel ? Proposez une explication à ce résultat sur base de vos connaissances en génétique.
+--->
+
+
+# Situation 2
+
+Une seconde expérience est proposée. Un croisement est réalisé entre deux lignées pures de *Lathyrus odoratus* L., 1753 (la première à des fleurs pourpres et des grains de pollen longs et la seconde à des fleurs rouges et des grains de pollen ronds). En génération F1, l'ensemble des plants sont à fleurs pourpres et avec des grains de pollen longs. En génération F2, les lois de Mendel devrait suivre un rapport 9/3/3/1. Les expérimentateurs observent la distribution suivante :
+
+- Fleurs pourpres et grains de pollen longs : 3125
+- Fleurs pourpres et grains de pollen ronds : 254
+- Fleurs rouges et grains de pollen longs : 256
+- Fleurs rouges et grains de pollen ronds : 866
+
+Est ce que ces observations respectent les lois de Mendel ?
+
+<!--- Consignes
+Proposez un tableau de contingence qui reprend les observations de la génération F2 obtenue.
+--->
+
+```{r lodoratus_tab}
+
+```
+
+<!--- Consignes
+Complétez le chunk ci-dessous afin de réfuter ou non l'hypothèse nulle au seuil alpha de 5%.
+--->
+
+```{r chi2_lodoratus}
+
+```
+
+<!--- Consignes
+Décrivez les résultats de votre test statistique afin de répondre à la question posée ci-dessus. N'oubliez pas d'être complet.
+--->
+
+<!--- Consignes
+Est ce que le résultat obtenu par votre analyse est en adéquation avec les lois de Mendel ? Proposez une explication à ce résultat sur base de vos connaissances en génétique.
+--->
+
+
+
+
