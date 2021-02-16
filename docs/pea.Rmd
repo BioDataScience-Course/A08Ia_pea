@@ -23,7 +23,7 @@ Ajoutez une image de Grégor Mendel. Sauvez votre image dans un dossier que vous
 
 Un croisement est effectué entre deux lignées pures de pois (la première à des graines lisses et la seconde des graines ridées). En génération F1, tous les hybrides ont le phénotype graine lisse. En génération F2, on retrouve les proportions suivantes sur 3529 graines étudiées, on observe 2237 graines lisses et 1292 graines ridées. 
 
-D'après les lois de Mendel, la génération F2 doit respecter un ratio de 3 graines lisses pour 1 graines ridées. Est ce que ce croisement respecte les lois de Mendel ?
+D'après les lois de Mendel, la génération F2 doit respecter un ratio de 3 graines lisses pour 1 graine ridée. Est ce que ce croisement respecte les lois de Mendel ?
 
 <!--- Consignes
 Reformulez la situation décrite afin de proposer l'hypothèse nulle et l'hypothèse alternative associée au test de chi^2^ que vous allez réaliser ci-dessous.
