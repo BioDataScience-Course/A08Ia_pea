@@ -47,5 +47,5 @@ README.html
 docs/*.html
 docs/*.pdf
 docs/*.nb.html
-docs/*-files/
+docs/*_files/
 
