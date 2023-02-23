@@ -17,54 +17,42 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Situation 1
 
-Un croisement est effectué entre deux lignées pures de pois (la première produit des graines lisses et la seconde des graines ridées). En génération F1, tous les hybrides ont le phénotype graine lisse. En génération F2, on retrouve les proportions suivantes : sur 3529 graines étudiées, on observe 2237 graines lisses et 1292 graines ridées.
+Un croisement est effectué entre deux lignées pures de pois (la première produit des graines lisses et la seconde des graines ridées). En génération F1, tous les hybrides ont le phénotype graine lisse. En génération F2, on retrouve les proportions suivantes : sur 3529 graines étudiées, on observe 2680 graines lisses et 849 graines ridées.
 
 D'après les lois de Mendel, la génération F2 devrait respecter un ratio de 3 graines lisses pour 1 graine ridée. Est-ce que ce croisement respecte les lois de Mendel ?
 
-## Hypothèses 1
-
-<!--% Reformulez la situation décrite en langage statistique en posant l'hypothèse nulle et l'hypothèse alternative 
-associée au test de chi^2^ que vous allez réaliser ci-dessous. -->
+<!--% Reformulez la situation décrite en langage statistique en posant l'hypothèse nulle et l'hypothèse alternative  associée au test de chi^2^ que vous allez réaliser ci-dessous. -->
 
 ...
 
-<!--% Réalisez un tableau de contingence qui reprend les observations de la génération F2. -->
-
-```{r pea_tab}
-(pea_tab <- as.table(c(lisse = ___, ridee = ___)))
-```
-
-<!--% Complétez le chunk ci-dessous afin de réfuter ou non l'hypothèse nulle au seuil alpha de 5%. -->
+<!--% Réalisez un tableau de contingence qui reprend les observations de la génération F2. Complétez le chunk ci-dessous afin de réfuter ou non l'hypothèse nulle au seuil alpha de 5%.-->
 
 ```{r chi2_pea}
+# tableau de contingence
+(pea_tab <- as.table(c(lisse = ___, ridee = ___)))
+# test du chi^2^
 chisq.test(___, p = ___, rescale.p = FALSE)
 ```
 
-## Résultats 1
-
 <!--% Décrivez les résultats de votre test statistique afin de répondre à la question posée ci-dessus. N'oubliez pas d'être complet. Un test d'hypothèse doit être analysé d'abord d'un point de vue statistique, ensuite sur le plan biologique (question posée au départ). -->
-
 
 # Situation 2
 
 Une seconde expérience est réalisée. Elle consiste en un croisement entre deux lignées pures de *Lathyrus odoratus* L., 1753 (la première a des fleurs pourpres et des grains de pollen longs et la seconde a des fleurs rouges et des grains de pollen ronds). En génération F1, l'ensemble des plants sont à fleurs pourpres et avec des grains de pollen longs. En génération F2, la loi de Mendel devrait suivre un rapport 9/3/3/1. Les expérimentateurs observent la distribution suivante de leurs plantes :
 
-- Fleurs pourpres et grains de pollen longs : 3125
-- Fleurs pourpres et grains de pollen ronds : 254
-- Fleurs rouges et grains de pollen longs : 256
-- Fleurs rouges et grains de pollen ronds : 866
+-   Fleurs pourpres et grains de pollen longs : 3125
+-   Fleurs pourpres et grains de pollen ronds : 254
+-   Fleurs rouges et grains de pollen longs : 256
+-   Fleurs rouges et grains de pollen ronds : 866
 
-Est ce que ces observations respectent la loi de Mendel ?
+Est-ce que ces observations respectent la loi de Mendel ?
 
-<!--% Réalisez un tableau de contingence qui reprend les observations de la génération F2 obtenue. -->
-
-```{r lodoratus_tab}
-
-```
-
-<!--% Complétez le chunk ci-dessous afin de déterminer si la génétique mendelienne est respectée au seuil alpha de 5%. -->
+<!--% Réalisez un tableau de contingence qui reprend les observations de la génération F2 obtenue. Déterminez ensuite si la génétique mendélienne est respectée au seuil alpha de 5%.-->
 
 ```{r chi2_lodoratus}
+# tableau de contingence
+
+# test du chi^2^
 
 ```
 
