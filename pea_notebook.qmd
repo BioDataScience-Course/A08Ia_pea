@@ -1,0 +1,208 @@
+---
+title: "Génétique mendélienne sur le pois"
+author: "___"
+date: "`r Sys.Date()`"
+format:
+  html:
+    code-fold: true
+    code-tools: true
+    toc: true
+editor: visual
+lang: fr
+---
+
+<!--# Ce bloc-notes ne comporte exceptionnellement pas la structure classique (introduction, but, matériel et méthodes...) pour aller droit à l'essentiel. Il vous permet de vous familiariser avec les tests d'hypothèses du Chi2 et de leur inteprétation, tout en vous libérant un maximum de temps pour commencer à travailler sur le projet de groupe. -->
+
+```{r setup, include=FALSE}
+# Ceci est nécessaire pour les tests SDD, ne pas utiliser dans un "vrai" projet
+if (!"tools:tests" %in% search())
+  source(here::here("tests/tools_tests.R"), attach(NULL, name = "tools:tests"))
+
+# Configuration de l'environnement SciViews::R
+SciViews::R("infer", lang = "fr")
+```
+
+# Génétique du pois
+
+Un croisement est effectué entre deux lignées pures de pois *Pisum sativum* L., 1753 (la première produit des graines lisses et la seconde des graines ridées). En génération F1, nous observons que tous les hybrides ont le phénotype graine lisse. Nous faisons une première expérience rapide avec un petit nombre de plants hybrides F1 que nous reproduisons une seconde fois (génération F2). Nous obtenons les résultats suivants : sur 54 graines, 43 sont lisses et 11 sont ridées.
+
+D'après les lois de Mendel, la génération F2 devrait respecter un ratio de 3 graines lisses pour 1 graine ridée (3:1) si le gène codant pour les graines lisses est dominant. Est-ce que ce croisement respecte les lois de Mendel ? Vous voulez le vérifier à l'aide d'un test d'hypothèse.
+
+<!--% Reformulez la situation décrite en langage statistique en posant l'hypothèse nulle et l'hypothèse alternative correspondantes à votre test de Chi^2 que vous allez réaliser ci-dessous. -->
+
+-   H~0~: ...
+-   H~1~: ...
+
+Le tableau suivant présente les résultats obtenus :
+
+<!--% Réalisez un tableau de contingence `pea_tab` qui reprend les observations de la génération F2. Utilisez `tabularise()` pour calculer les pourcentages, ainsi que le total. -->
+
+```{r peatab, record='RO', object='pea_tab'}
+# Tableau de contingence
+pea_tab <- as.table(___)
+# Tableau formaté
+tabularise(___)
+```
+
+Nous réalisons un test $\chi^2$ univarié sur ces données.
+
+<!--% Complétez le chunk ci-dessous pour réaliser votre test d'hypothèse. -->
+
+```{r peatabchi2, record='RN'}
+chisq.test(___, p = ___, rescale.p = ___)
+```
+
+<!--% Interprétez les résultats de votre test au seuil alpha de 5% pour répondre à la question posée ci-dessus. -->
+
+```{r peatabchi2comment, output='asis'}
+select_answer(r"-{
+[] -   Nous rejetons H~0~ au seuil $\alpha$ de 5%.
+[] -   Nous ne rejetons pas H~0~ au seuil $\alpha$ de 5%.
+
+[] -   Le caractère lisse ou ridé des graines de pois ne suit pas la loi de Mendel ($\chi^2_{obs}$ = 0.62, ddl = 1, p = 0.43).
+[] -   Le caractère lisse ou ridé des graines de pois ne suit pas la loi de Mendel de manière significative au seuil $\alpha$ de 5% ($\chi^2–{obs}$ = 0.62, ddl = 1, p = 0.43).
+[] -   Le caractère lisse ou ridé des graines de pois suit la loi de Mendel ($\chi^2_{obs}$ = 0.62, ddl = 1, p = 0.43).
+[] -   Le caractère lisse ou ridé des graines de pois suit la loi de Mendel de manière significative au seuil $\alpha$ de 5% ($\chi^2_{obs}$ = 0.62, ddl = 1, p = 0.43).
+[] -   Nous ne montrons pas de manière significative au seuil $\alpha$ de 5% que la loi de Mendel ne s'applique pas pour le caractère lisse ou ridé des graines de pois ($\chi^2_{obs}$ = 0.62, ddl = 1, p = 0.43).
+
+[] -   Le nombre d'observations est correct ici.
+[] -   Le nombre d'observations est faible et nous ne pouvons probablement pas répondre à la question posée. nous observons un ratio 4:1 dans notre échantillon.}-")
+```
+
+Nous recommençons notre expérience, cette fois avec un plus grand nombre de plants hybrides F1. En génération F2, nous observons maintenant les proportions suivantes : 2680 graines lisses et 849 graines ridées.
+
+<!--% Réalisez un second tableau de contingence `pea_tab2` qui reprend les observations de la génération F2 de la deuxième expérience. Utilisez `tabularise()` pour calculer les pourcentages, ainsi que le total -->
+
+```{r peatab2, record='RO', object='pea_tab2'}
+# Tableau de contingence
+pea_tab2 <- ___
+# Tableau formaté
+___
+```
+
+Un test $\chi^2$ univarié est réalisé sur ces nouvelles données.
+
+<!--% Effectuez le test d'hypothèse pour vérifier une seconde fois. -->
+
+```{r peatab2chi2, record='RN'}
+___
+```
+
+<!--% Interprétez les résultats de votre test au seuil alpha de 5% pour répondre à la question posée ci-dessus. -->
+
+```{r peatab2chi2comment, output='asis'}
+select_answer(r"-{
+[] -   Nous rejetons H~0~ au seuil $\alpha$ de 5%.
+[] -   Nous ne rejetons pas H~0~ au seuil $\alpha$ de 5%.
+
+[] -   Le caractère lisse ou ridé des graines de pois ne suit pas la loi de Mendel ($\chi^2_{obs}$ = 1.67, ddl = 1, p = 0.20).
+[] -   Le caractère lisse ou ridé des graines de pois ne suit pas la loi de Mendel de manière significative au seuil $\alpha$ de 5% ($\chi^2_{obs}$ = 1.67, ddl = 1, p = 0.20).
+[] -   Le caractère lisse ou ridé des graines de pois suit la loi de Mendel ($\chi^2_{obs}$ = 1.67, ddl = 1, p = 0.20).
+[] -   Le caractère lisse ou ridé des graines de pois suit la loi de Mendel de manière significative au seuil $\alpha$ de 5% ($\chi^2_{obs}$ = 1.67, ddl = 1, p = 0.20).
+[] -   Nous ne montrons pas de manière significative au seuil $\alpha$ de 5% que la loi de Mendel ne s'applique pas pour le caractère lisse ou ridé des graines de pois ($\chi^2_{obs}$ = 1.67, ddl = 1, p = 0.20).
+
+[] -   Le nombre d'observations est correct ici.
+[] -   Le nombre d'observations est faible et nous ne pouvons probablement pas répondre à la question posée.
+  
+[] -   Notre seconde expérience confirme les résultats de la première.
+[] -   Notre seconde expérience contredit les résultats de la première.
+[] -   Notre seconde expérience est en désaccord avec les résultats de la première, mais comme le nombre d'observations y est plus important, nous nous fions à ce dernier résultat.}-")
+```
+
+# Génétique du pois de senteur
+
+Nous nous intéressons maintenant au croisement entre deux lignées pures du pois de senteur *Lathyrus odoratus* L., 1753. La première lignée a des fleurs pourpres et des grains de pollen longs et la seconde a des fleurs rouges et des grains de pollen ronds. En génération F1, l'ensemble des plants sont à fleurs pourpres et avec des grains de pollen longs. En génération F2, la loi de Mendel prédit que les ratios devraient être de 9:3:3:1 pour pourpre-long, pourpre-rond, rouge-long et rouge-court, respectivement, si les caractères pourpres et grain de pollen long sont dominants. Nous observons la distribution suivante de nos plantes F2 :
+
+-   Fleurs pourpres et grains de pollen longs : 3125
+-   Fleurs pourpres et grains de pollen ronds : 254
+-   Fleurs rouges et grains de pollen longs : 256
+-   Fleurs rouges et grains de pollen ronds : 866
+
+Est-ce que ces observations respectent la loi de Mendel ?
+
+<!-- Reformulez la question en H~0~ et H~1~ pour le test de Chi^2 univarié. -->
+
+-   H~0~: ...
+-   H~1~: ...
+
+Le tableau de contingence suivant résume les résultats obtenus :
+
+<!--% Réalisez un tableau de contingence `pea_tab3` qui reprend les observations de la génération F2 de pois de senteur obtenues. Formatez-le ensuite avec `tabularise()`. -->
+
+```{r peatab3, record='RO', object='pea_tab3'}
+# Tableau de contingence
+pea_tab3 <- as.table(___)
+# Tableau formaté
+___
+```
+
+Nous effectuons un test $\chi^2$ univarié pour répondre à la question posée.
+
+<!--% Déterminez si la génétique mendélienne est respectée au seuil alpha de 5%. -->
+
+```{r peatab3chi2, record='RN'}
+chisq.test(___, p = ___, rescale.p = TRUE)
+```
+
+<!--% Interprétez les résultats de votre test statistique afin de répondre à la question posée ci-dessus. -->
+
+```{r peatab3chi2comment, output='asis'}
+select_answer(r"-{
+[] -   Nous rejetons H~0~ au seuil $\alpha$ de 5%.
+[] -   Nous ne rejetons pas H~0~ au seuil $\alpha$ de 5%.
+
+[] -   La génération F2 de pois de senteurs ne suit pas les ratios 9:3:3:1 ($\chi^2_{obs}$ = 2176, ddl = 3, p < 0.001).
+[] -   La génération F2 de pois de senteurs ne suit pas les ratios 9:3:3:1 de manière significative au seuil $\alpha$ de 5% ($\chi^2_{obs}$ = 2176, ddl = 3, p < 0.001).
+[] -   La génération F2 de pois de senteurs suit les ratios 9:3:3:1 ($\chi^2_{obs}$ = 2176, ddl = 3, p < 0.001).
+[] -   La génération F2 de pois de senteurs suit les ratios 9:3:3:1 de manière significative au seuil $\alpha$ de 5%  ($\chi^2_{obs}$ = 2176, ddl = 3, p < 0.001).
+[] -   Nous ne montrons pas de manière significative au seuil $\alpha$ de 5% que les ratios 9:3:3:1 ne sont pas suivis par la génération F2 de pois de senteur ($\chi^2_{obs}$ = 2176, ddl = 3, p < 0.001).}-")
+```
+
+## Indépendance de la couleur et de la forme du grain de pollen
+
+Nous voulons à présent vérifier l'indépendance des caractères pourpre et grain de pollen long chez le pois de senteur par un test $\chi^2$ d'indépendance.
+
+<!--% Reformulez la question en langage statistique (H~0~ et H~1~) pour le test de Chi^2 d'indépendance. -->
+
+-   H~0~: ...
+-   H~1~: ...
+
+Le tableau de contingence à double entrée ci-dessous résume les résultats obtenus :
+
+<!--% Réencodez vos données dans `pea4` et calculez un tableau de contingence à double entrée dans `pea_tab4` avec xtabs() de manière adéquate pour réaliser un test Chi^2 d'indépendance. Présentez le tableau de contingence avec `tabularise()`. -->
+
+```{r peatab4, record='RO', object='pea_tab4'}
+# Tableau de contingence
+pea4 <- dtx(
+  couleur = ___,
+  pollen  = ___,
+  freq    = ___)
+pea_tab4 <- ___(data = ___, ___)
+tabularise(___)
+```
+
+Notre test $\chi^2$ d'indépendance donne ceci :
+
+<!--% Réalisez le test de Chi^2 d'indépendance. Ensuite produisez le tableau contenant les fréquences attendues sous H0. -->
+
+```{r peatab4chi2, record='RO', object='pea4_chi2'}
+# Test Chi2 d'indépendance
+(pea4_chi2 <- ___)
+# Tableau des fréquences attendues sous H0
+tabularise(___[["___"]]) |>
+  Stb$add_header_lines("Fréquences attendues sous H0")
+```
+
+<!--% Interprétez ce test. -->
+
+```{r peatab4chi2comment, output='asis'}
+select_answer(r"-{
+[] -   Nous rejetons H~0~ au seuil $\alpha$ de 5%.
+[] -   Nous ne rejetons pas H~0~ au seuil $\alpha$ de 5%.
+
+[] -   La couleur et la forme des grains de pollen sont des caractères indépendants chez le pois de senteur ($\chi^2_{obs}$ = 2183, ddl = 1, p < 0.001).
+[] -   La couleur et la forme des grains de pollen sont des caractères indépendants chez le pois de senteur de manière significative au seuil $\alpha$ de 5% ($\chi^2_{obs}$ = 2183, ddl = 1, p < 0.001).
+[] -   La couleur et la forme des grains de pollen sont des caractères dépendants chez le pois de senteur ($\chi^2_{obs}$ = 2183, ddl = 1, p < 0.001).
+[] -   La couleur et la forme des grains de pollen sont des caractères dépendants chez le pois de senteur de manière significative au seuil $\alpha$ de 5%  ($\chi^2_{obs}$ = 2183, ddl = 1, p < 0.001).
+[] -   Nous ne montrons pas de manière significative au seuil $\alpha$ de 5% que la couleur et la forme des grains de pollen sont des caractère dépendants chez le pois de senteur ($\chi^2_{obs}$ = 2183, ddl = 1, p < 0.001).}-")
+```

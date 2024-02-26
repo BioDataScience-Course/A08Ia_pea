@@ -14,3 +14,8 @@ LaTeX: pdfLaTeX
 
 AutoAppendNewline: Yes
 StripTrailingWhitespace: Yes
+
+BuildType: Makefile
+MakefilePath: tests
+
+SpellingDictionary: fr_FR
