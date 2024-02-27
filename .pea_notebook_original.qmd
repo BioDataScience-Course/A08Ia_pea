@@ -11,7 +11,7 @@ editor: visual
 lang: fr
 ---
 
-<!--# Ce bloc-notes ne comporte exceptionnellement pas la structure classique (introduction, but, matériel et méthodes...) pour aller droit à l'essentiel. Il vous permet de vous familiariser avec les tests d'hypothèses du Chi2 et de leur inteprétation, tout en vous libérant un maximum de temps pour commencer à travailler sur le projet de groupe. -->
+<!--# Ce bloc-notes ne comporte exceptionnellement pas la structure classique (introduction, but, matériel et méthodes...) pour aller droit à l'essentiel. Il vous permet de vous familiariser avec les tests d'hypothèses du Chi2 et leur interprétation, tout en vous libérant un maximum de temps pour commencer à travailler sur le projet de groupe. -->
 
 ```{r setup, include=FALSE}
 # Ceci est nécessaire pour les tests SDD, ne pas utiliser dans un "vrai" projet
